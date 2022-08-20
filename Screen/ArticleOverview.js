@@ -8,7 +8,7 @@ import {
   Pressable,
   Platform,
 } from "react-native";
-import { MEALS } from "../dummy-data";
+
 const ArticleOverviewScreen = ({ navigation, route }) => {
   const articleDetail = route.params.article;
 

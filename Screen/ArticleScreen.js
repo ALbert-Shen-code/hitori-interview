@@ -28,9 +28,10 @@ const ArticleScreen = () => {
   };
 
   const getArticle = async () => {
-    const article = await axios.get(url);
-
-    if (article.status == 200 && article.data) {
+    const article = await axios.get(url, {
+      headers: { "Content-Type": "application/json" },
+    });
+    if (article.status == 200) {
       setArticleList(article.data.articles);
       setRefreshing(false);
     }
@@ -40,9 +41,9 @@ const ArticleScreen = () => {
     getArticle();
   }, []);
 
-  const onRefresh = useCallback(() => {
+  const onRefresh = useCallback(async () => {
     setRefreshing(true);
-    getArticle();
+    await getArticle();
   }, []);
 
   return (
